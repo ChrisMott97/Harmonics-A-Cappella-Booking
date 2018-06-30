@@ -2,10 +2,11 @@ var mongoose = require('mongoose');
 var timestamps = require('mongoose-timestamp');
 
 var fresherSchema = mongoose.Schema({
-    rating       : Number,
-    comment      : String,
-    lecturer     : String,
-    user         : String
+    firstName     : String,
+    lastName      : String,
+    email         : String,
+    day          : String,
+    time          : Number
 });
 
 fresherSchema.plugin(timestamps);
