@@ -9,9 +9,14 @@ var adminRouter = require('./routes/admin');
 
 var app = express();
 
+//Import the mongoose module
+var mongoose = require('mongoose');
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+app.set('view options', { layout: 'layout' });
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -19,8 +24,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Import the mongoose module
-var mongoose = require('mongoose');
 
 //Set up default mongoose connection
 var mongoDB = 'mongodb://harmonics:harmonicsex1@ds131800.mlab.com:31800/harmonics';
