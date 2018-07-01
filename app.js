@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
+var fresherRouter = require('./routes/fresher');
 
 var app = express();
 
@@ -38,6 +39,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
+app.use('/fresher', fresherRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
