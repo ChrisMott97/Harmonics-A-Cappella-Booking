@@ -23,3 +23,30 @@ $("#day").change(function(){
     })
     
 })
+
+$(".data").click(function(){
+    var email = $(this).text()
+
+    if(email){
+        $("#email").text(email);
+        $.get("/fresher/"+email, function(data){
+            $("#fullName").text(data.firstName + " " + data.lastName);
+        })
+        $("#remove").removeAttr("disabled");
+    }else{
+        $("#fullName").text("Click an auditionee to know more!")
+        $("#email").text("");
+        $("#remove").attr("disabled", true);
+    }
+})
+
+$("#remove").click(function(){
+    var email = $("#email").text();
+    if(email){
+        $.post("/fresher/"+email, function(data){
+            if(data){
+                location.reload();
+            }
+        })
+    }
+})
