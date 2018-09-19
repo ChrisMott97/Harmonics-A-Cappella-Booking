@@ -4,8 +4,10 @@ $(document).ready(function(){
 
 let times = [];
 
-for (let i = 900; i < 2100; i=i+15) {
-    times.push(i);
+for (let i = 900; i < 2100; i=i+100) {
+    for(let j = i; i<i+60; i=i+15){
+      times.push(j);
+    }
   }
 
 $("#day").change(function(){
