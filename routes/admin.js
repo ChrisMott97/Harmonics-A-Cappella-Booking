@@ -16,8 +16,10 @@ router.get('/', ensureAuthenticated, function (req, res, next) {
   var all = {"Sunday": {}, "Wednesday": {}};
   var days = ["Sunday", "Wednesday"];
   var times = [];
-  for (let i = 900; i < 2100; i=i+15) {
-    times.push(i);
+  for (let i = 900; i < 2100; i=i+100) {
+    for(let j = i; i<i+60; i=i+15){
+      times.push(j);
+    }
   }
   fresher.find({},function(err, results){
     if(err) return handleError(err);
