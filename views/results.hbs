@@ -2,13 +2,23 @@
     <div class="col l8 s12 offset-l2">
         <div class="card-panel">
             <table class="centered">
+                {{log all}}
                 <tr>
                     <td></td>
-                    <td>Mon</td>
-                    <td>Tue</td>
-                    <td>Wed</td>
+                    {{#each all}}
+                    <td>{{@key}}</td>
+                    {{/each}}
                 </tr>
+                {{#each times as |time|}}
                 <tr>
+                    <td>{{this}}</td>
+                    {{#each ../all as |timeVal dayKey|}}
+
+                    <td class="data {{dayKey}} t{{time}}">{{#with (lookup timeVal [time])}}{{email}}{{/with}}</td>
+                    {{/each}}
+                </tr>
+                {{/each}}
+                {{!-- <tr>
                     <td>11:00</td>
                     <td class="data Monday t1100">{{all.Monday.[1100].email}}</td>
                     <td class="data Tuesday t1100">{{all.Tuesday.[1100].email}}</td>
@@ -43,7 +53,7 @@
                     <td class="data Monday t1300">{{all.Monday.[1330].email}}</td>
                     <td class="data Tuesday t1300">{{all.Tuesday.[1330].email}}</td>
                     <td class="data Wednesday t1300">{{all.Wednesday.[1330].email}}</td>
-                </tr>
+                </tr> --}}
             </table>
         </div>
 
