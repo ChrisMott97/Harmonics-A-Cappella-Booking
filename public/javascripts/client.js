@@ -2,7 +2,11 @@ $(document).ready(function(){
     $('select').formSelect();
   });
 
-let times = [1100, 1130, 1200, 1230, 1300, 1330];
+let times = [];
+
+for (let i = 900; i < 2100; i=i+15) {
+    times.push(i);
+  }
 
 $("#day").change(function(){
     $("#time").empty();
@@ -16,7 +20,7 @@ $("#day").change(function(){
             if(data.count == 0){
                 $("#time").append("<option value="+time+">"+time+"</option>");
             }else{
-                $("#time").append("<option disabled value="+time+">"+time+"</option>");
+                // $("#time").append("<option disabled value="+time+">"+time+"</option>");
             }
             $('select').formSelect();
         })

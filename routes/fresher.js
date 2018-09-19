@@ -4,7 +4,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var fresher = require('./models/fresher');
 
-/* Login page for admin */
+/* Login page for admin (/fresher/)*/
 router.get('/:email', function (req, res, next) {
     fresher.findOne({"email": req.params.email}, function(err, result){
         if(err) return handleError(err);
