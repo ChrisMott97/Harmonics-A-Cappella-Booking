@@ -16,9 +16,13 @@ router.get('/thankyou/:name-:day-:time', function(req, res, next){
 });
 
 router.post('/times', function(req, res, next){
-  fresher.count({time: req.body.time, day: req.body.day}, function(err, count){
+  // fresher.count({time: req.body.time, day: req.body.day}, function(err, count){
+  //   if(err) return handleError(err);
+  //   res.send({"count": count});
+  // })
+  fresher.find({day: req.body.day}, function(err, freshers){
     if(err) return handleError(err);
-    res.send({"count": count});
+    res.send({"freshers": freshers})
   })
 })
 
