@@ -17,7 +17,7 @@ router.get('/', ensureAuthenticated, function (req, res, next) {
   var days = ["Sunday", "Wednesday"];
   var times = [];
   for (let i = 900; i < 2100; i=i+100) {
-    for(let j = i; i<i+60; i=i+15){
+    for(let j = i; j<i+60; j=j+15){
       times.push(j);
     }
   }

@@ -5,7 +5,7 @@ $(document).ready(function(){
 let times = [];
 
 for (let i = 900; i < 2100; i=i+100) {
-    for(let j = i; i<i+60; i=i+15){
+    for(let j = i; j<i+60; j=j+15){
       times.push(j);
     }
   }
@@ -17,16 +17,33 @@ $("#day").change(function(){
 
     var day = $("#day").val();
 
-    times.forEach(function(time){
-        $.post("/times", {"time": time, "day": day}, function(data){
-            if(data.count == 0){
-                $("#time").append("<option value="+time+">"+time+"</option>");
-            }else{
-                // $("#time").append("<option disabled value="+time+">"+time+"</option>");
+    $.post("/times", {"day": day}, function(data){
+        for (let i = 0; i < times.length; i++) {
+            const time = times[i];
+            var exists = false;
+            for (let j = 0; j < data.freshers.length; j++) {
+                const fresher = data.freshers[j];
+                if(fresher.time == time){
+                    exists = true;
+                    break;
+                }
             }
-            $('select').formSelect();
-        })
+            if(!exists){
+                $("#time").append("<option value="+time+">"+time+"</option>");
+            }
+        }
+        $('select').formSelect();
     })
+    // times.forEach(function(time){
+        // $.post("/times", {"time": time, "day": day}, function(data){
+        //     if(data.count == 0){
+        //         $("#time").append("<option value="+time+">"+time+"</option>");
+        //     }else{
+        //         // $("#time").append("<option disabled value="+time+">"+time+"</option>");
+        //     }
+        //     $('select').formSelect();
+        // })
+    // })
     
 })
 
