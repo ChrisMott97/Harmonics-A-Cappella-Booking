@@ -37,7 +37,8 @@ if(process.env.DATABASE_URL){
   // var mongoDB = 'mongodb://harmonics:harmonicsex1@ds131800.mlab.com:31800/harmonics';
   var mongoDB = process.env.DATABASE_URL
 }else{
-  var mongoDB = 'mongodb://harmonics:harmonicsex1@localhost/harmonics'
+  // var mongoDB = 'mongodb://harmonics:harmonicsex1@localhost/harmonics'
+  var mongoDB = 'mongodb://harmonics:harmonicsex1@ds131800.mlab.com:31800/harmonics';
 }
 
 mongoose.connect(mongoDB);
