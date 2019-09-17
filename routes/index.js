@@ -6,7 +6,7 @@ var fresher = require('./models/fresher');
 
 /* GET Landing Page */
 router.get('/', function(req, res, next) {
-  res.render('down');
+  res.render('index');
 });
 
 /** Success page */
@@ -29,8 +29,17 @@ router.post('/times', function(req, res, next){
 /* Send data to database */
 router.post('/', function(req, res, next){
   fresher.create({ firstName: req.body.firstName , lastName: req.body.lastName, email: req.body.email, day: req.body.day, time: req.body.time}, function (err, new_fresher) {
-    if (err) return handleError(err);
+    // if (err) return console.log(err);
     res.redirect('/thankyou/'+new_fresher.firstName+'-'+new_fresher.day+'-'+new_fresher.time);
+  });
+});
+
+router.post('/empty', function(req, res, next){
+  console.log(req.body.day)
+  console.log(req.body.time)
+  fresher.create({ firstName: "Empty" , lastName: "Empty", email: req.body.day+req.body.time, day: req.body.day, time: req.body.time}, function (err, new_fresher) {
+    res.send({success: true})
+    // if (err) return handleError(err);
   });
 });
 

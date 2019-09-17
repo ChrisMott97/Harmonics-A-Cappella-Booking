@@ -37,7 +37,8 @@ if(process.env.DATABASE_URL){
   // var mongoDB = '***REMOVED***';
   var mongoDB = process.env.DATABASE_URL
 }else{
-  var mongoDB = '***REMOVED***'
+  // var mongoDB = '***REMOVED***'
+  var mongoDB = '***REMOVED***';
 }
 
 mongoose.connect(mongoDB);

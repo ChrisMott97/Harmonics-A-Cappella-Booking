@@ -13,10 +13,10 @@ function ensureAuthenticated(req, res, next) {
 
 /* Admin splashpage */
 router.get('/', ensureAuthenticated, function (req, res, next) {
-  var all = {"Sunday": {}, "Wednesday": {}};
-  var days = ["Sunday", "Wednesday"];
+  var all = {"Sunday": {}, "Monday": {}, "Tuesday": {}};
+  var days = ["Sunday", "Monday", "Tuesday"];
   var times = [];
-  for (let i = 900; i < 2100; i=i+100) {
+  for (let i = 900; i < 2000; i=i+100) {
     for(let j = i; j<i+60; j=j+15){
       times.push(j);
     }

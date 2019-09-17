@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 let times = [];
 
-for (let i = 900; i < 2100; i=i+100) {
+for (let i = 900; i < 2000; i=i+100) {
     for(let j = i; j<i+60; j=j+15){
       times.push(j);
     }
@@ -46,9 +46,14 @@ $("#day").change(function(){
     // })
     
 })
+var day;
+var time;
 
 $(".data").click(function(){
     var email = $(this).text()
+    day = $(this).attr('class').split(/\s+/)[1];
+    time = $(this).attr('class').split(/\s+/)[2];
+    time = time.substring(1, time.length);
 
     if(email){
         $("#email").text(email);
@@ -57,9 +62,9 @@ $(".data").click(function(){
         })
         $("#remove").removeAttr("disabled");
     }else{
-        $("#fullName").text("Click an auditionee to know more!")
+        $("#fullName").text("Remove this slot from auditions!")
         $("#email").text("");
-        $("#remove").attr("disabled", true);
+        $("#remove").removeAttr("disabled");
     }
 })
 
@@ -70,6 +75,10 @@ $("#remove").click(function(){
             if(data){
                 location.reload();
             }
+        })
+    }else{
+        $.post("/empty", {day:day, time:time}, function(data){
+            location.reload();
         })
     }
 })
