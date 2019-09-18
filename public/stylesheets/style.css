@@ -1,9 +1,18 @@
 .corner{
-  margin-left: 30px;
-  margin-top: 30px;
+  /* margin-left: 315px; */
+  margin-top: 15px;
+  text-align: center;
 }
 .data:hover{
   background-color: lightblue;
   cursor: pointer;
 }
-
+html{
+  background-color: #0057A7;
+}
+.harmonics{
+  background-color: #0057A7;
+}
+.harmonics2{
+  border-color: #0057A7;
+}
