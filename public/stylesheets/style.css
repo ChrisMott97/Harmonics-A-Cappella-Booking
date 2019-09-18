@@ -7,6 +7,10 @@
   background-color: lightblue;
   cursor: pointer;
 }
+blockquote{
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
 html{
   background-color: #0057A7;
 }
