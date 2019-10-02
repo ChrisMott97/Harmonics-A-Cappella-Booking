@@ -6,7 +6,7 @@ var fresher = require('./models/fresher');
 
 /* GET Landing Page */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('down');
 });
 
 /** Success page */
